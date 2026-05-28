@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina Official Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #020617;
+            font-family: 'Inter', sans-serif;
+            color: #94a3b8;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .presentation-wrapper {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: #0f172a;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .presentation-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.05), transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05), transparent 40%);
+            pointer-events: none;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 50px 80px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2, h3, h4 { font-family: 'Urbanist', sans-serif; color: #f8fafc; }
+        h1 { font-size: 80px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px; }
+        h1 span { color: #22d3ee; }
+        
+        .slide-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+            border-left: 6px solid #22d3ee;
+            padding-left: 20px;
+            align-self: flex-start;
+        }
+
+        h3 { color: #22d3ee; font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+        p { font-size: 18px; line-height: 1.6; margin-bottom: 15px; }
+        strong { color: #e2e8f0; }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            width: 100%;
+            align-items: center;
+        }
+
+        ul { list-style: none; }
+        li { margin-bottom: 15px; padding-left: 25px; position: relative; font-size: 18px; line-height: 1.5; color: #cbd5e1; }
+        li::before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #22d3ee;
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+
+        .image-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            background: #020617;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .image-wrapper.with-qr { padding: 16px; }
+        .image-wrapper.with-qr > .image-frame { width: 100%; height: 100%; position: relative; border-radius: 16px; overflow: hidden; }
+        .qr-badge {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            width: 128px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 18px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+        .qr-badge img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+        .qr-caption {
+            font-size: 11px;
+            color: #94a3b8;
+            text-align: center;
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 35px;
+            height: 100%;
+        }
+
+        .tiled-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; }
+        .tile {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .tile .icon { color: #22d3ee; font-size: 32px; margin-bottom: 15px; }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background: #22d3ee;
+            transition: width 0.3s ease;
+            z-index: 10;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .controls-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            font-size: 14px;
+            color: #64748b;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-wrapper">
+        <div class="progress-bar" id="progress"></div>
+        <div class="slide-number" id="slide-num">1 / 9</div>
+        <div class="controls-hint"><i class="fa-solid fa-keyboard mr-2"></i> Use Left/Right Arrows or Spacebar to navigate. Press F11 for Fullscreen.</div>
+
+        <!-- SLIDE 1: THE WHAT (Mission) -->
+        <div class="slide">
+            <div style="text-align: center; max-width: 920px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+                <img src="Lumina Logo.png" alt="Lumina Logo" style="width: 220px; height: auto; object-fit: contain; display: block;">
+                <h1 style="font-size: 78px; margin: 0;">Lumina</h1>
+                <div style="max-width: 860px;">
+                    <p style="color: #38bdf8; font-size: 30px; font-weight: 600; margin: 0 0 4px;">All in One Talent Solution - Highlighting Competencies</p>
+                    <p style="font-size: 22px; color: #e2e8f0; line-height: 1.6; margin: 0; white-space: nowrap;">We Verify Talents for Companies, Giving Fair Opportunities to Students.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: THE WHY (Problem vs Value) -->
+        <div class="slide">
+            <h2 class="slide-title" style="margin-bottom: 24px;">Mutual Problems vs Lumina Value</h2>
+            <div class="content-area">
+                
+                <!-- NEW PUNCHY FOUNDER QUOTE -->
+                <div style="text-align: center; margin-bottom: 35px; padding: 0 40px;">
+                    <p style="font-size: 21px; color: #e2e8f0; font-style: italic; line-height: 1.5; margin: 0; font-weight: 500;">
+                        "One entered the industry from a recognized university, one trapped free labor just to build a portfolio. Taiwan depicted us how a healthy ecosystem should work as a background for our solution."
+                    </p>
+                    <p style="font-size: 15px; color: #38bdf8; margin-top: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">- Lumina Dedicated Builders -</p>
+                </div>
+
+                <div class="two-column">
+                    <div class="card" style="border-color: rgba(239, 68, 68, 0.4);">
+                        <h3 style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation" style="margin-right: 10px;"></i> The Industry and Academics Gap</h3>
+                        <ul style="margin-top: 20px;">
+                            <li><strong>Graduate Traps:</strong> From unpaid internships to irrelevant workloads not contributing to portfolios.</li>
+                            <li><strong>Businesses Blocked:</strong> Startups and SMEs lack screening tools to hire the best talents.</li>
+                            <li><strong>Pedigree Bias:</strong> Manual portals rely on university brands instead of validated portfolios.</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="border-color: rgba(34, 211, 238, 0.4);">
+                        <h3 style="color: #22d3ee;"><i class="fa-solid fa-lightbulb" style="margin-right: 10px;"></i> Lumina Value</h3>
+                        <ul style="margin-top: 20px;">
+                            <li><strong>Direct Meritocracy:</strong> Filterable talent profiles matching company-specific requirements.</li>
+                            <li><strong>Guaranteed Fair Pay:</strong> Tiered compensation standard to eliminate unpaid jobs or exploitation.</li>
+                            <li><strong>Verifiable Portfolios:</strong> Converts logged internship work into a significant portfolio and skill badges.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <!-- SLIDE 3: THE WHAT (Product) -->
+        <div class="slide">
+            <h2 class="slide-title">The Verification Engine & Tech Stack</h2>
+            <div class="content-area">
+                <div class="two-column">
+                    
+                    <!-- Left Column: Core Features -->
+                    <div>
+                        <p style="font-size: 22px; color: #f8fafc; margin-bottom: 25px;">An automated task distribution and milestone validation engine.</p>
+                        <ul>
+                            <li><strong>Credentials Verification Matrix:</strong> Automated text-parsing to holistically extract skills, academic credentials, personal achievements.</li>
+                            <li><strong>The KPI/OKR Workspace:</strong> Allowing companies drop explicit deliverables and students log their work progress.</li>
+                            <li><strong>Tasks Validation and Portfolio Generation:</strong> Two-way consent intern and supervisor with 360 review that resulted in a portfolio.</li>
+                            <li><strong>Simplified Hiring Flow:</strong> Specific filter and interview invitation by interested talents with matched competencies.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right Column: Interactive Embed & Custom QR Code -->
+                    <div style="display: flex; flex-direction: column; gap: 16px; height: 420px;">
+                        
+                        <!-- LIVE FIGMA EMBED -->
+                        <div class="image-wrapper" style="flex-grow: 1; padding: 0; background: #0f172a; overflow: hidden; border: 1px solid rgba(34, 211, 238, 0.4);">
+                            <iframe 
+                                style="border: none; width: 100%; height: 100%;" 
+                                src="https://wearelumina.figma.site/" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- QR CODE & LINK BANNER -->
+                        <div class="card" style="padding: 16px 20px; display: flex; align-items: center; gap: 20px; border-left: 4px solid #22d3ee; height: auto;">
+                            <!-- Custom Local QR Code -->
+                            <div style="background: white; padding: 4px; border-radius: 6px; flex-shrink: 0;">
+                                <img src="QR.PNG" alt="Lumina Prototype QR Code" style="width: 55px; height: 55px; display: block; object-fit: contain;">
+                            </div>
+                            <div>
+                                <h4 style="color: #f8fafc; font-size: 17px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-mobile-screen" style="color: #22d3ee;"></i> Scan to Simulate
+                                </h4>
+                                <a href="https://wearelumina.figma.site/" target="_blank" style="font-size: 15px; color: #38bdf8; text-decoration: none; word-break: break-all; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                                    https://wearelumina.figma.site/
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- SLIDE 4: THE WHAT (Venture Squad) -->
+        <div class="slide">
+            <h2 class="slide-title">Lumina's Dedicated Builders</h2>
+            <div class="content-area">
+                <div class="two-column">
+                    <div class="image-wrapper" style="height: 450px;">
+                        <img src="Builders.png" alt="Builders Team" onerror="this.src='https://placehold.co/800x600/1e293b/94a3b8?text=Place+Builders.png+Here'">
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-size: 24px; margin-bottom: 5px;">Risman Gustiana Wardana</h3>
+                            <p style="font-size: 16px; margin-bottom: 5px; color: #f8fafc;"><strong>Chief Executive Officer</strong></p>
+                            <p style="font-size: 16px;">Industrial Management MBA from NTUST with 3+ years operations & lean production optimization across Asia and Europian Region.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 30px;">
+                            <h3 style="font-size: 24px; margin-bottom: 5px;">Ahmad Habibulloh</h3>
+                            <p style="font-size: 16px; margin-bottom: 5px; color: #f8fafc;"><strong>Chief Technology Officer</strong></p>
+                            <p style="font-size: 16px;">AI Technology Masters from NTUST with 5+ years of industrial experience streamlining global enterprise technologies across Oil & Gas, Retail, and Telecommunication Industries.</p>
+                        </div>
+                        
+                        <div style="background: rgba(30, 41, 59, 0.8); padding: 20px; border-radius: 12px; border-left: 4px solid #38bdf8;">
+                            <h4 style="color: #38bdf8; font-size: 18px; margin-bottom: 10px;">Advisory Board</h4>
+                            <p style="font-size: 15px; margin-bottom: 5px;"><strong>Prof. Yuh-Shying Gau</strong></p>
+                            <p style="font-size: 15px; margin-bottom: 0;"><strong>Prof. Jyun Ping Jhan</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: SME CAPABILITY LADDER -->
+        <div class="slide">
+            <h2 class="slide-title">Lumina SME Capability Ladder</h2>
+            <div class="content-area">
+                <p style="font-size: 22px; color: #f8fafc; margin-bottom: 40px; text-align: center;">"Lumina matches student projects to the right SME capability level"</p>
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-seedling"></i></div>
+                        <h3 style="font-size: 20px; white-space: nowrap;">1. Basic SME</h3>
+                        <p style="font-size: 15px;"><strong>Survival & Manual Operation</strong></p>
+                        <p style="font-size: 14px; margin-top: 10px; color: #cbd5e1;">Focus: Standardizing observations, simple SOP, basic tracking.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                        <h3 style="font-size: 20px; white-space: nowrap;">2. Growing SME</h3>
+                        <p style="font-size: 15px;"><strong>Operational Improvement Stage</strong></p>
+                        <p style="font-size: 14px; margin-top: 10px; color: #cbd5e1;">Focus: Root cause analysis, waste reduction, process improvement.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3 style="font-size: 20px; white-space: nowrap;">3. Scaling SME</h3>
+                        <p style="font-size: 15px;"><strong>Data & Systemization Stage</strong></p>
+                        <p style="font-size: 14px; margin-top: 10px; color: #cbd5e1;">Focus: KPI dashboards, workflow systems, data-driven improvement.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h3 style="font-size: 20px; white-space: nowrap;">4. Innovation-Ready SME</h3>
+                        <p style="font-size: 15px;"><strong>Innovation & Market Opportunity Stage</strong></p>
+                        <p style="font-size: 14px; margin-top: 10px; color: #cbd5e1;">Focus: Innovation projects, prototypes, MVPs, startup opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: MARKET SCALE & THE $50k PRE-SEED ASK -->
+        <div class="slide">
+            <h2 class="slide-title" style="margin-bottom: 20px; font-size: 36px; flex-shrink: 0;">Market Scale & Lean Capital Strategy</h2>
+            
+            <div class="content-area" style="display: grid; grid-template-rows: auto 1fr; gap: 20px; height: 100%; width: 100%;">
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="card" style="border-top: 4px solid #f59e0b; padding: 16px 20px;">
+                        <h4 style="color: #f59e0b; font-size: 15px; margin-bottom: 8px;">SOM: Pilot Cohort (Year 1)</h4>
+                        <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">
+                            <strong style="color: #f8fafc;">10,950 Students and 10-20 SMEs.</strong> 15% of TAM across UGM, ITB, ITPLN at near-zero customer acquisition cost.
+                        </p>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #22d3ee; padding: 16px 20px;">
+                        <h4 style="color: #22d3ee; font-size: 15px; margin-bottom: 8px;">SAM: B2B Expansion (Yrs 2-3)</h4>
+                        <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.4;">
+                            Scale to 120+ active B2B clients across Tech Startups, MSMEs, and enterprises.
+                        </p>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #3b82f6; padding: 16px 20px;">
+                        <h4 style="color: #3b82f6; font-size: 15px; margin-bottom: 8px;">TAM: Indonesian Scale</h4>
+                        <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.4;">
+                            83.2% Unplaced Interns out of ~130,000 verified applicants stranded without placements.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div class="card" style="border: 1px solid rgba(168, 85, 247, 0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(180deg, rgba(30, 41, 59, 0.6) 0%, rgba(168, 85, 247, 0.1) 100%); padding: 16px;">
+                        <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 11px; margin-bottom: 8px; color: #c084fc;">Pre-Seed Investment</p>
+                        <div style="color: #f8fafc; font-size: 48px; font-weight: 800; font-family: 'Urbanist', sans-serif; line-height: 1; margin-bottom: 12px; text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);">
+                            NT$100,000
+                        </div>
+                        <p style="font-size: 13px; color: #c084fc; font-weight: 600; margin-bottom: 8px;">Lower CAPEX, Lean Operations</p>
+                        <p style="font-size: 12px; color: #94a3b8; margin: 0; line-height: 1.4;">
+                            Efficient development by adopting AI agents into infrastructure.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 8px;">
+                        <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #22d3ee; border-radius: 6px; padding: 10px 14px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <strong style="color: #22d3ee; font-size: 14px; margin-bottom: 2px;">40% — Efficient AI driven Development</strong>
+                            <span style="font-size: 13px; color: #cbd5e1; line-height: 1.3;">
+                                Deploying Antigravity agents to manage verification workflows, keeping engineering costs near zero.
+                            </span>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #34d399; border-radius: 6px; padding: 10px 14px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <strong style="color: #34d399; font-size: 14px; margin-bottom: 2px;">40% — Bypassing Bureaucracy</strong>
+                            <span style="font-size: 13px; color: #cbd5e1; line-height: 1.3;">
+                                Subsidizing the Year 1 pilot to capture insights from B2G/BUMN use-cases to replicate.
+                            </span>
+                        </div>
+                        <div style="background: rgba(15, 23, 42, 0.6); border-left: 3px solid #f59e0b; border-radius: 6px; padding: 10px 14px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <strong style="color: #f59e0b; font-size: 14px; margin-bottom: 2px;">20% — Cross-Border Buffer</strong>
+                            <span style="font-size: 13px; color: #cbd5e1; line-height: 1.3;">
+                                IP protection, enterprise SLAs, and a strategic legal regulatory.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card" style="border: 1px solid rgba(34, 211, 238, 0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(180deg, rgba(30, 41, 59, 0.6) 0%, rgba(34, 211, 238, 0.1) 100%); padding: 16px;">
+                        <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 11px; margin-bottom: 8px; color: #94a3b8;">Year 5 Target Projection</p>
+                        <div style="color: #22d3ee; font-size: 48px; font-weight: 800; font-family: 'Urbanist', sans-serif; line-height: 1; margin-bottom: 12px; text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);">
+                            NT$3M
+                        </div>
+                        <p style="font-size: 13px; color: #f8fafc; font-weight: 600; margin-bottom: 8px;">Reaching 52.2% Positive EBITDA</p>
+                        <p style="font-size: 12px; color: #cbd5e1; margin: 0; text-align: justify; line-height: 1.4;">
+                            A highly-leveraged Series A equity conversion driven by maintaining a massive 52%+ software margin by cooperating with state-owned universities and state-owned enterprises.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <!-- SLIDE 7: COMMERCIAL STRATEGY & POSITIONING -->
+        <div class="slide">
+            <h2 class="slide-title" style="margin-bottom: 16px; font-size: 32px; flex-shrink: 0;">Commercial Strategy & Positioning</h2>
+            
+            <div class="content-area" style="display: grid; grid-template-rows: auto auto; gap: 16px; height: 100%; width: 100%; align-content: center;">
+                
+                <!-- TOP ROW: SME Tier Cards -->
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                    
+                    <!-- Basic SME -->
+                    <div class="card" style="padding: 14px 16px; border-top: 4px solid #94a3b8; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; margin-bottom: 8px;">
+                            <h3 style="font-size: 14px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Basic SME</h3>
+                            <p style="font-size: 10.5px; color: #94a3b8; margin: 0;">Social impact</p>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span style="font-size: 9px; color: #94a3b8; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Indonesian Student Allowance</span>
+                            <strong style="color: #22d3ee; font-size: 18px;">Rp500k - 1.2M</strong>
+                        </div>
+                        <ul style="font-size: 10.5px; padding-left: 14px; margin: 0; line-height: 1.4;">
+                            <li style="margin-bottom: 4px;">Low fee pilot</li>
+                            <li style="margin-bottom: 0;">Small project fee</li>
+                        </ul>
+                    </div>
+
+                    <!-- Growing SME -->
+                    <div class="card" style="padding: 14px 16px; border-top: 4px solid #38bdf8; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; margin-bottom: 8px;">
+                            <h3 style="font-size: 14px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Growing SME</h3>
+                            <p style="font-size: 10.5px; color: #94a3b8; margin: 0;">Early market</p>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span style="font-size: 9px; color: #94a3b8; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Indonesian Student Allowance</span>
+                            <strong style="color: #22d3ee; font-size: 18px;">Rp800k - 1.8M</strong>
+                        </div>
+                        <ul style="font-size: 10.5px; padding-left: 14px; margin: 0; line-height: 1.4;">
+                            <li style="margin-bottom: 4px;">Project fee</li>
+                            <li style="margin-bottom: 0; color: #38bdf8; font-weight: 700;">Optional success fee</li>
+                        </ul>
+                    </div>
+
+                    <!-- Scaling SME -->
+                    <div class="card" style="padding: 14px 16px; border-top: 4px solid #3b82f6; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; margin-bottom: 8px;">
+                            <h3 style="font-size: 14px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Scaling SME</h3>
+                            <p style="font-size: 10.5px; color: #94a3b8; margin: 0;">Scalable B2B</p>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span style="font-size: 9px; color: #94a3b8; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Indonesian Student Allowance</span>
+                            <strong style="color: #22d3ee; font-size: 18px;">Rp1.5M - 3.5M</strong>
+                        </div>
+                        <ul style="font-size: 10.5px; padding-left: 14px; margin: 0; line-height: 1.4;">
+                            <li style="margin-bottom: 4px;">SME subscription</li>
+                            <li style="margin-bottom: 0; color: #3b82f6; font-weight: 700;">Success fee (10-30%)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Innovation-Ready -->
+                    <div class="card" style="padding: 14px 16px; border-top: 4px solid #f59e0b; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; margin-bottom: 8px;">
+                            <h3 style="font-size: 14px; font-weight: 700; color: #f8fafc; margin-bottom: 4px;">Innovation SME</h3>
+                            <p style="font-size: 10.5px; color: #94a3b8; margin: 0;">Premium tier</p>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <span style="font-size: 9px; color: #94a3b8; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Indonesian Student Allowance</span>
+                            <strong style="color: #22d3ee; font-size: 18px;">Rp2.5M - 5M+</strong>
+                        </div>
+                        <ul style="font-size: 10.5px; padding-left: 14px; margin: 0; line-height: 1.4;">
+                            <li style="margin-bottom: 4px;">Project value (3-10%)</li>
+                            <li style="margin-bottom: 0; color: #f59e0b; font-weight: 700;">Success fee & equity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BOTTOM ROW -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    
+                    <!-- LEFT: CBCT Quadrant -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; height: 100%;">
+                        <div class="card" style="padding: 12px 16px; background: rgba(30, 41, 59, 0.4); display: flex; flex-direction: column; justify-content: center;">
+                            <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 6px;"><span style="color:#22d3ee">C</span>onsumer</h3>
+                            <p style="font-size: 11px; color: #cbd5e1; margin: 0; line-height: 1.4;">Students & SMEs actively seeking outcome-verified internship talent matching.</p>
+                        </div>
+                        <div class="card" style="padding: 12px 16px; background: rgba(30, 41, 59, 0.4); display: flex; flex-direction: column; justify-content: center;">
+                            <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 6px;"><span style="color:#22d3ee">B</span>rand</h3>
+                            <p style="font-size: 11px; color: #cbd5e1; margin: 0; line-height: 1.4;">"Luminous" Promise: Building a competence-first meritocracy <strong>beyond talent acquisition</strong>.</p>
+                        </div>
+                        <div class="card" style="padding: 12px 16px; background: rgba(30, 41, 59, 0.4); display: flex; flex-direction: column; justify-content: center;">
+                            <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 6px;"><span style="color:#22d3ee">C</span>ompetition</h3>
+                            <p style="font-size: 11px; color: #cbd5e1; margin: 0; line-height: 1.4;">
+                                Big platofrms <span style="color:#94a3b8; font-size: 12px; margin: 0 4px;"><i class="fa-brands fa-linkedin"></i> <i class="fa-solid fa-handshake"></i></span> are mostly limited for sourcing to hiring only. Lumina is unique via end-to-end processing (sourcing to off-boarding).
+                            </p>
+                        </div>
+                        <div class="card" style="padding: 12px 16px; background: rgba(30, 41, 59, 0.4); display: flex; flex-direction: column; justify-content: center;">
+                            <h3 style="font-size: 13px; font-weight: 700; margin-bottom: 6px;"><span style="color:#22d3ee">T</span>ouchpoint</h3>
+                            <p style="font-size: 11px; color: #cbd5e1; margin: 0; line-height: 1.4;">SaaS Workspaces & Value-Based Placements charging 10%-30% of financial value created.</p>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Stacked Enterprise & Reality Check -->
+                    <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 12px; height: 100%;">
+                        
+                        <!-- Enterprise APIs -->
+                        <div class="card" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%); border-left: 4px solid #c084fc; padding: 14px 18px; display: flex; flex-direction: column; justify-content: center;">
+                            <h3 style="color: #c084fc; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <i class="fa-solid fa-building-user"></i> Enterprise API Integrations
+                            </h3>
+                            <p style="font-size: 11px; color: #cbd5e1; margin-bottom: 8px; line-height: 1.4;">
+                                Custom workspace APIs designed for large corporate talent pipelines.
+                            </p>
+                            <ul style="font-size: 11px; color: #cbd5e1; margin: 0; line-height: 1.4; padding-left: 14px;">
+                                <li style="margin-bottom: 4px;"><strong>Annual Licensing:</strong> Retainers for KPI dashboards.</li>
+                                <li style="margin-bottom: 0;"><strong>Volume Hiring:</strong> Scaled tier fees for bulk placements.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Reality Check -->
+                        <div class="card" style="background: rgba(15, 23, 42, 0.6); border-left: 4px solid #34d399; padding: 14px 18px; display: flex; flex-direction: column; justify-content: center;">
+                            <h4 style="color: #34d399; font-size: 14px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-scale-balanced"></i> Reality Check: IDR Regulations
+                            </h4>
+                            <p style="font-size: 11px; color: #cbd5e1; margin: 0; line-height: 1.4;">
+                                Indonesia currently has <strong>no legal framework</strong> mandating internship salaries. To prevent exploitation in this grey area, the IDR figures above represent Lumina’s proprietary standard matrix—fixing compensation variables by: <strong>SME Capability, Location Cost, and Project Complexity</strong>.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SLIDE 8: THE HOW (Silicon Valley Bridge) -->
+        <div class="slide" style="background: url('background.png') center/cover no-repeat; background-size: cover; position: relative;">
+            <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.02);"></div>
+            
+            <div class="content-area" style="position: relative; z-index: 1; width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; justify-content: center;">
+                
+                <!-- Top Header Box -->
+                <div style="background: rgba(255,255,255,0.92); border-radius: 24px; padding: 24px 32px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1); border: 1px solid rgba(148, 163, 184, 0.2);">
+                    <h2 class="slide-title" style="border-color: #f59e0b; color: #0f172a; background: none; padding-left: 16px; text-align: left; margin: 0 0 12px; font-size: 32px;">The Builders Alliance Plan to Silicon Valley</h2>
+                    <p style="font-size: 18px; margin: 0; text-align: left; color: #334155; line-height: 1.6;">"An institutional alliance can unleash further potentials. However, it requires exact timing, clear mutual returns, and strategic governance."</p>
+                </div>
+                
+                <!-- Middle Grid (Ask & Needs) -->
+                <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+                    
+                    <!-- Left: Capital Ask -->
+                    <div style="background: rgba(255,255,255,0.92); border-radius: 24px; padding: 20px 24px; border: 1px solid rgba(148, 163, 184, 0.2);">
+                        <h4 style="font-size: 18px; color: #0f172a; margin-bottom: 12px; font-weight: 700;">The Capital Ask</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 10px; color: #334155; font-size: 15px; line-height: 1.5;">NT$100k  Seed Matching resource distribution.</li>
+                            <li style="margin-bottom: 0; color: #334155; font-size: 15px; line-height: 1.5;">Funded cross-border operations tracking.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Right: Strategic Needs -->
+                    <div style="background: rgba(255,255,255,0.92); border-radius: 24px; padding: 20px 24px; border: 1px solid rgba(148, 163, 184, 0.2);">
+                        <h4 style="font-size: 18px; color: #0f172a; margin-bottom: 12px; font-weight: 700;">Strategic Network Needs</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 10px; color: #334155; font-size: 15px; line-height: 1.5;">Executive venture coaching & VC leadership insights.</li>
+                            <li style="margin-bottom: 10px; color: #334155; font-size: 15px; line-height: 1.5;">Discovering customer channels and international IP compliance.</li>
+                            <li style="margin-bottom: 0; color: #334155; font-size: 15px; line-height: 1.5;">Enterprise partnerships on WeAreDeveloper Congress for API integration.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Bottom: Incubation Window -->
+                <div style="display: flex; justify-content: center;">
+                    <div style="width: min(400px, 100%); background: rgba(255,255,255,0.96); border-radius: 20px; padding: 16px 24px; border: 1px solid rgba(148, 163, 184, 0.2); text-align: center; box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);">
+                        <h3 style="margin: 0 0 4px; color: #64748b; font-size: 16px; letter-spacing: 1px;">Venture Acceleration Period</h3>
+                        <p style="margin: 0; font-size: 24px; font-weight: 800; color: #0f172a;">Sept 19 – Oct 4 2026</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- SLIDE 9: FINAL IDENTITY PAGE -->
+        <div class="slide">
+            <div class="content-area" style="width: 100%; max-width: 960px; margin: 0 auto; justify-content: center; align-items: center; text-align: center; gap: 22px; display: flex; flex-direction: column; padding: 0 40px;">
+                <img src="Lumina Logo.png" alt="Lumina Logo" style="width: 240px; max-width: 65%; height: auto; object-fit: contain; display: block; margin: 0 auto;">
+                <div style="max-width: 840px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; margin: 0 auto;">
+                    <p style="font-size: 18px; color: #ffffff; margin: 0; line-height: 1.7; white-space: nowrap;">"Lumina provides the mutually beneficial infrastructure to deliver fair opportunities for students in growing small businesses."</p>
+                    <p style="font-size: 28px; color: #38bdf8; font-weight: 700; margin: 0; line-height: 1.2;">Ready to embark on a luminous journey?</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progress');
+        const slideNum = document.getElementById('slide-num');
+        let currentSlide = 0;
+
+        function updatePresentation() {
+            slides.forEach((slide, index) => {
+                slide.style.display = (index === currentSlide) ? 'flex' : 'none';
+            });
+            const progressPercentage = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = progressPercentage + '%';
+            slideNum.innerText = `${currentSlide + 1} / ${slides.length}`;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updatePresentation();
+                }
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updatePresentation();
+                }
+            }
+        });
+
+        updatePresentation();
+    </script>
+</body>
+</html>
