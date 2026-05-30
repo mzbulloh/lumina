@@ -261,18 +261,161 @@
             <div class="content-area">
                 <div class="two-column">
                     
-                    <!-- Left Column: Core Features -->
-                    <div>
-                        <p style="font-size: 22px; color: #f8fafc; margin-bottom: 25px;">An automated task distribution and milestone validation engine.</p>
-                        <ul>
-                            <li><strong>Credentials Verification Matrix:</strong> Automated text-parsing to holistically extract skills, academic credentials, personal achievements.</li>
-                            <li><strong>The KPI/OKR Workspace:</strong> Allowing companies drop explicit deliverables and students log their work progress.</li>
-                            <li><strong>Tasks Validation and Portfolio Generation:</strong> Two-way consent intern and supervisor with 360 review that resulted in a portfolio.</li>
-                            <li><strong>Simplified Hiring Flow:</strong> Specific filter and interview invitation by interested talents with matched competencies.</li>
-                        </ul>
+                    <!-- Left Column: CONTINUOUS FLOW VISUALIZATION -->
+                    <div style="background: rgba(15, 23, 42, 0.4); border-radius: 20px; border: 1px solid rgba(34, 211, 238, 0.1); padding: 16px 20px; height: 420px; display: flex; flex-direction: column; position: relative; overflow: hidden;">
+                        
+                        <!-- NEW SUB-DESCRIPTION HEADER -->
+                        <p style="font-size: 13.5px; color: #e2e8f0; margin: 0 0 12px 0; text-align: center; line-height: 1.4; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; flex-shrink: 0; font-weight: 500;">
+                            An automated task distribution and milestone validation engine from validating, sourcing, sorting, hiring, evaluating, to off-boarding.
+                        </p>
+
+                        <style>
+                            .flow-container {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                gap: 8px;
+                                flex-grow: 1;
+                                position: relative;
+                            }
+
+                            /* The continuous background wire */
+                            .flow-wire {
+                                position: absolute;
+                                top: 22px;
+                                bottom: 22px;
+                                left: 21px; /* Aligns exactly with the center of the icons */
+                                width: 2px;
+                                background: rgba(255, 255, 255, 0.08);
+                                z-index: 0;
+                            }
+
+                            /* The bright continuous data packet */
+                            .flow-packet {
+                                position: absolute;
+                                top: 0;
+                                left: -1px;
+                                width: 4px;
+                                height: 50px;
+                                background: #22d3ee;
+                                box-shadow: 0 0 15px #22d3ee, 0 0 30px #ffffff;
+                                border-radius: 4px;
+                                z-index: 1;
+                                animation: packetDrop 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+                            }
+
+                            @keyframes packetDrop {
+                                0% { top: 0%; opacity: 0; }
+                                10% { opacity: 1; }
+                                90% { opacity: 1; }
+                                100% { top: 100%; opacity: 0; }
+                            }
+
+                            /* Symmetrical Box Styles */
+                            .flow-node {
+                                background: rgba(30, 41, 59, 0.85);
+                                border: 1px solid rgba(255, 255, 255, 0.05);
+                                border-radius: 12px;
+                                padding: 8px 14px;
+                                display: flex;
+                                align-items: center;
+                                gap: 14px;
+                                width: 100%;
+                                flex: 1;
+                                position: relative;
+                                z-index: 2; /* Sits above the wire */
+                            }
+
+                            .icon-wrap {
+                                width: 32px;
+                                height: 32px;
+                                background: #0f172a;
+                                border: 1px solid rgba(34, 211, 238, 0.4);
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: #22d3ee;
+                                font-size: 14px;
+                                flex-shrink: 0;
+                                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                            }
+
+                            .text-wrap h4 { font-size: 13.5px; margin-bottom: 2px; text-align: left; }
+                            .text-wrap p { font-size: 10.5px; color: #94a3b8; margin: 0; text-align: left; line-height: 1.3; }
+
+                            /* Cascading Pulse Animations */
+                            @keyframes pulseData {
+                                0%, 100% { border-color: rgba(255, 255, 255, 0.05); box-shadow: none; }
+                                50% { border-color: #22d3ee; box-shadow: 0 0 12px rgba(34, 211, 238, 0.25); background: rgba(30, 41, 59, 1); }
+                            }
+                            @keyframes pulsePurple {
+                                0%, 100% { border-color: rgba(255, 255, 255, 0.05); box-shadow: none; }
+                                50% { border-color: #c084fc; box-shadow: 0 0 12px rgba(168, 85, 247, 0.25); background: rgba(30, 41, 59, 1); }
+                            }
+                            @keyframes pulseGreen {
+                                0%, 100% { border-color: rgba(255, 255, 255, 0.05); box-shadow: none; }
+                                50% { border-color: #34d399; box-shadow: 0 0 12px rgba(52, 211, 153, 0.25); background: rgba(30, 41, 59, 1); }
+                            }
+
+                            .fn-1 { animation: pulseData 2.5s infinite 0s; }
+                            .fn-2 { animation: pulsePurple 2.5s infinite 0.5s; }
+                            .fn-3 { animation: pulseData 2.5s infinite 1.0s; }
+                            .fn-4 { animation: pulseData 2.5s infinite 1.5s; }
+                            .fn-5 { animation: pulseGreen 2.5s infinite 2.0s; }
+
+                            /* Specific icon color overrides */
+                            .fn-2 .icon-wrap { color: #c084fc; border-color: rgba(168, 85, 247, 0.5); }
+                            .fn-5 .icon-wrap { color: #34d399; border-color: rgba(52, 211, 153, 0.5); }
+                        </style>
+
+                        <div class="flow-container">
+                            <div class="flow-wire"><div class="flow-packet"></div></div>
+                            
+                            <div class="flow-node fn-1">
+                                <div class="icon-wrap"><i class="fa-solid fa-file-contract"></i></div>
+                                <div class="text-wrap">
+                                    <h4>1. Credentials Matrix</h4>
+                                    <p>Automated parsing extracts skills & academics.</p>
+                                </div>
+                            </div>
+
+                            <div class="flow-node fn-2">
+                                <div class="icon-wrap"><i class="fa-solid fa-robot"></i></div>
+                                <div class="text-wrap">
+                                    <h4 style="color: #f8fafc;">2. AI Classification</h4>
+                                    <p>Models shortlist candidates, reducing human effort.</p>
+                                </div>
+                            </div>
+
+                            <div class="flow-node fn-3">
+                                <div class="icon-wrap"><i class="fa-solid fa-filter"></i></div>
+                                <div class="text-wrap">
+                                    <h4>3. Simplified Hiring Flow</h4>
+                                    <p>Filters and invites matched talent accurately.</p>
+                                </div>
+                            </div>
+
+                            <div class="flow-node fn-4">
+                                <div class="icon-wrap"><i class="fa-solid fa-briefcase"></i></div>
+                                <div class="text-wrap">
+                                    <h4>4. KPI/OKR Workspace</h4>
+                                    <p>Companies drop deliverables. Students log progress.</p>
+                                </div>
+                            </div>
+
+                            <div class="flow-node fn-5">
+                                <div class="icon-wrap"><i class="fa-solid fa-id-card-clip"></i></div>
+                                <div class="text-wrap">
+                                    <h4 style="color: #f8fafc;">5. Verified Portfolio</h4>
+                                    <p>Two-way consent outputs verifiable skill badges.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     
-                    <!-- Right Column: Interactive Embed & Custom QR Code -->
+                    <!-- Right Column: Interactive Embed & Custom QR Code (UNTOUCHED) -->
                     <div style="display: flex; flex-direction: column; gap: 16px; height: 420px;">
                         
                         <!-- LIVE FIGMA EMBED -->
@@ -376,7 +519,7 @@
             
             <div class="content-area" style="display: grid; grid-template-rows: auto 1fr; gap: 20px; height: 100%; width: 100%;">
                 
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
                     <div class="card" style="border-top: 4px solid #f59e0b; padding: 16px 20px;">
                         <h4 style="color: #f59e0b; font-size: 15px; margin-bottom: 8px;">SOM: Pilot Cohort (Year 1)</h4>
                         <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">
@@ -384,15 +527,21 @@
                         </p>
                     </div>
                     <div class="card" style="border-top: 4px solid #22d3ee; padding: 16px 20px;">
-                        <h4 style="color: #22d3ee; font-size: 15px; margin-bottom: 8px;">SAM: B2B Expansion (Yrs 2-3)</h4>
+                        <h4 style="color: #22d3ee; font-size: 15px; margin-bottom: 8px;">SAM: B2B Expansion (Year 2-3)</h4>
                         <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.4;">
                             Scale to 120+ active B2B clients across Tech Startups, MSMEs, and enterprises.
                         </p>
                     </div>
                     <div class="card" style="border-top: 4px solid #3b82f6; padding: 16px 20px;">
-                        <h4 style="color: #3b82f6; font-size: 15px; margin-bottom: 8px;">TAM: Indonesian Scale</h4>
+                        <h4 style="color: #3b82f6; font-size: 14px; margin-bottom: 8px;">TAM: Indonesian Scale (Year 3-4)</h4>
                         <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.4;">
                             83.2% Unplaced Interns out of ~130,000 verified applicants stranded without placements.
+                        </p>
+                    </div>
+                    <div class="card" style="border-top: 4px solid #10b981; padding: 16px 20px;">
+                        <h4 style="color: #10b981; font-size: 15px; margin-bottom: 8px;">Global Expansion (Year 5+)</h4>
+                        <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">
+                            Building relationships in <strong>Taiwan</strong> & expanding to <strong>Southeast Asia</strong>, with early entry plans for the <strong>European</strong> market.
                         </p>
                     </div>
                 </div>
